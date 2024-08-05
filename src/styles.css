@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/* header styling */
+
+nav ul {
+    display: flex;
+    height: 10vh;
+    list-style: none;
+    border-bottom: rgba(0, 0, 0, 0.2) solid 2px;
+}
+
+nav ul li {
+    flex-grow: 1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+nav ul li:nth-child(2) {
+    border-left: rgba(0, 0, 0, 0.2) solid 2px;
+    border-right: rgba(0, 0, 0, 0.2) solid 2px;
+}
+
+/* booklist tab styling */
+
+.headline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.bookCard {
+    margin: 5%;
+    border: rgba(0, 0, 0, 1) solid 2px;
+}
+
+.bookCard h2 {
+    border-bottom: rgba(0, 0, 0, 1) solid 2px;
+}
