@@ -1,5 +1,7 @@
 import { userLibrary } from '../index.js';
 import { readStatus } from './book.js';
+import expandIcon from '../img/expandIcon.png';
+import collapseIcon from '../img/collapseIcon.png';
 
 export default function makeBooks() {
     const bookList = document.createElement('div');
@@ -24,6 +26,7 @@ export default function makeBooks() {
         const pages = document.createElement('h3');
         pages.textContent = `Pages: ${book.pages}`;
         
+        // read status
         const readDropdown = document.createElement('select');
         Object.values(readStatus).forEach(status => {
             const option = document.createElement('option');
@@ -43,6 +46,10 @@ export default function makeBooks() {
         bookCard.appendChild(pages);
         bookCard.appendChild(readDropdown);
 
+        // div to contain both remove button and expand button for flexbox purposes
+        const container = document.createElement('div');
+        container.classList.add('container');
+
         // remove book button
         const removeBookButton = document.createElement('button');
         removeBookButton.textContent = 'Remove Book';
@@ -50,7 +57,41 @@ export default function makeBooks() {
             userLibrary.splice(index, 1);
             bookList.removeChild(bookCard);
         });
-        bookCard.appendChild(removeBookButton);
+        container.appendChild(removeBookButton);
+        
+        // expand to show description
+        const expand = document.createElement('img');
+        expand.src = expandIcon;
+        expand.alt = 'expand button';
+        expand.addEventListener('click', () => {
+            description.style.display='block';
+            collapse.style.display='block';
+            expand.style.display='none';
+        });
+        container.appendChild(expand);
+
+        bookCard.appendChild(container);
+
+        // collapse to hide description
+        const endContainer = document.createElement('div');
+        endContainer.classList.add('endContainer');
+
+        const collapse = document.createElement('img');
+        collapse.src = collapseIcon;
+        collapse.alt = 'collapse button';
+        collapse.addEventListener('click', () => {
+            description.style.display='none';
+            collapse.style.display='none';
+            expand.style.display='block';
+        });
+        endContainer.appendChild(collapse);
+
+        // description
+        const description = document.createElement('p');
+        description.textContent = 'example text';
+        bookCard.appendChild(description);
+
+        bookCard.appendChild(endContainer);
 
         bookList.appendChild(bookCard);
     });
