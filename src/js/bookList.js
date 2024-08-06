@@ -2,14 +2,15 @@ import { userLibrary } from '../index.js';
 
 export default function makeBooks() {
     const bookList = document.createElement('div');
-    bookList.classList.add('headline');
-
+    
     const headline = document.createElement('h1');
     headline.textContent = 'The BookList';
+    headline.classList.add('headline');
+
     bookList.appendChild(headline);
 
 
-    for (let book of userLibrary) {
+    userLibrary.forEach((book, index) => {
         const bookCard = document.createElement('div');
         bookCard.classList.add('bookCard');
     
@@ -30,8 +31,17 @@ export default function makeBooks() {
         bookCard.appendChild(pages);
         bookCard.appendChild(read);
 
-        bookList.appendChild(bookCard);        
-    }
+        // remove book button
+        const removeBookButton = document.createElement('button');
+        removeBookButton.textContent = 'Remove Book';
+        removeBookButton.addEventListener('click', () => {
+            userLibrary.splice(index, 1);
+            bookList.removeChild(bookCard);
+        });
+        bookCard.appendChild(removeBookButton);
+
+        bookList.appendChild(bookCard);
+    });
 
     return bookList;
 }
