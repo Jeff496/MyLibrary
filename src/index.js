@@ -6,11 +6,10 @@ import makeHome from './js/home.js';
 import makeBooks from './js/bookList.js';
 import makeCatalog from './js/catalog.js';
 
-
-// creating and adding user books
-
+// user library
 export const userLibrary = [];
 
+// test books: to be removed
 function addBookToLibrary(title, author, pages, read, description) {
     const newBook = new Book(title, author, pages, read, description);
     userLibrary.push(newBook);
@@ -21,7 +20,6 @@ addBookToLibrary('fakeBook', 'fake Author', 234, readStatus.READING, 'hello');
 addBookToLibrary('fakeBook2', 'fake Author', 548, readStatus.WANT_TO_READ, 'helllooooooo?');
 
 // switching tabs
-
 function clearPage() {
     const content = document.getElementById('content');
     while(content.firstChild) {
@@ -45,4 +43,4 @@ document.addEventListener('DOMContentLoaded', () => {
     catalogTab.addEventListener('click', () => switchTab(makeCatalog));
 
     switchTab(makeBooks);
-})
+});

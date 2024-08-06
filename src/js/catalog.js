@@ -1,5 +1,6 @@
 import { userLibrary } from '../index.js';
 import Book, { readStatus } from './book.js';
+import { saveUserLibrary } from './updateStore.js';
 
 export default function makeCatalog() {
     const catalog = document.createElement('div');
@@ -113,9 +114,10 @@ function addBookForm() {
 
         const newBook = new Book(title, author, pages, read, description);
         userLibrary.push(newBook);
+        saveUserLibrary();
 
         form.reset();
-    })
+    });
 
     return form;
 }

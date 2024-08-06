@@ -2,8 +2,11 @@ import { userLibrary } from '../index.js';
 import { readStatus } from './book.js';
 import expandIcon from '../img/expandIcon.png';
 import collapseIcon from '../img/collapseIcon.png';
+import { loadUserLibrary, saveUserLibrary } from './updateStore.js';
 
 export default function makeBooks() {
+    loadUserLibrary();
+
     const bookList = document.createElement('div');
     
     const headline = document.createElement('h1');
@@ -43,6 +46,7 @@ export default function makeBooks() {
 
         readDropdown.addEventListener('change', () => {
             book.read = readDropdown.value;
+            saveUserLibrary();
         });
 
         // div to contain both remove button and expand button for flexbox purposes
@@ -55,6 +59,7 @@ export default function makeBooks() {
         removeBookButton.addEventListener('click', () => {
             userLibrary.splice(index, 1);
             bookList.removeChild(bookCard);
+            saveUserLibrary();
         });
         container.appendChild(removeBookButton);
         
