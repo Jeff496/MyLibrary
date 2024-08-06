@@ -1,4 +1,5 @@
 import { userLibrary } from '../index.js';
+import { readStatus } from './book.js';
 
 export default function makeBooks() {
     const bookList = document.createElement('div');
@@ -23,13 +24,24 @@ export default function makeBooks() {
         const pages = document.createElement('h3');
         pages.textContent = `Pages: ${book.pages}`;
         
-        const read = document.createElement('h3');
-        read.textContent = `Read: ${book.read ? 'yes' : 'no'}`
+        const readDropdown = document.createElement('select');
+        Object.values(readStatus).forEach(status => {
+            const option = document.createElement('option');
+            option.value = status;
+            option.textContent = status.charAt(0).toUpperCase() + status.slice(1).replaceAll('-', ' ');
+            readDropdown.appendChild(option);
+        });
+
+        readDropdown.value = book.read;
+
+        readDropdown.addEventListener('change', () => {
+            book.read = readDropdown.value;
+        });
 
         bookCard.appendChild(title);
         bookCard.appendChild(author);
         bookCard.appendChild(pages);
-        bookCard.appendChild(read);
+        bookCard.appendChild(readDropdown);
 
         // remove book button
         const removeBookButton = document.createElement('button');
