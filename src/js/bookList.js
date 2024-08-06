@@ -19,12 +19,15 @@ export default function makeBooks() {
     
         const title = document.createElement('h2');
         title.textContent = book.title;
+        bookCard.appendChild(title);
         
         const author = document.createElement('h3');
         author.textContent = `Author: ${book.author}`;
+        bookCard.appendChild(author);
         
         const pages = document.createElement('h3');
         pages.textContent = `Pages: ${book.pages}`;
+        bookCard.appendChild(pages);
         
         // read status
         const readDropdown = document.createElement('select');
@@ -36,15 +39,11 @@ export default function makeBooks() {
         });
 
         readDropdown.value = book.read;
+        bookCard.appendChild(readDropdown);
 
         readDropdown.addEventListener('change', () => {
             book.read = readDropdown.value;
         });
-
-        bookCard.appendChild(title);
-        bookCard.appendChild(author);
-        bookCard.appendChild(pages);
-        bookCard.appendChild(readDropdown);
 
         // div to contain both remove button and expand button for flexbox purposes
         const container = document.createElement('div');
@@ -88,7 +87,7 @@ export default function makeBooks() {
 
         // description
         const description = document.createElement('p');
-        description.textContent = 'example text';
+        description.textContent = book.description;
         bookCard.appendChild(description);
 
         bookCard.appendChild(endContainer);

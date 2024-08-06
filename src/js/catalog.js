@@ -57,8 +57,19 @@ function addBookForm() {
     form.appendChild(pagesLabel);
     form.appendChild(pagesField);
 
-    // read status
+    // description
+    const descriptionLabel = document.createElement('label');
+    descriptionLabel.textContent = 'Book Description: ';
+    descriptionLabel.htmlFor = 'descriptionfield';
 
+    const descriptionField = document.createElement('textarea');
+    descriptionField.placeholder = 'Description';
+    descriptionField.name = 'description';
+    descriptionField.id = 'descriptionfield';
+    form.appendChild(descriptionLabel);
+    form.appendChild(descriptionField);
+
+    // read status
     const readDropdown = document.createElement('select');
     readDropdown.name = 'read';
     readDropdown.required = true;
@@ -91,7 +102,6 @@ function addBookForm() {
     form.appendChild(submit);
 
     // form submission
-
     form.addEventListener('submit', (event) => {
         event.preventDefault();
 
@@ -99,8 +109,9 @@ function addBookForm() {
         const author = event.target.author.value;
         const pages = event.target.pages.value;
         const read = event.target.read.value;
+        const description = event.target.description.value;
 
-        const newBook = new Book(title, author, pages, read);
+        const newBook = new Book(title, author, pages, read, description);
         userLibrary.push(newBook);
 
         form.reset();

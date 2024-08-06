@@ -6,10 +6,11 @@ export const readStatus = {
 };
 
 export default class Book {
-    constructor(title, author, pages, read) {
+    constructor(title, author, pages, read, description) {
         this.title = title;
         this.author = author;
         this.pages = pages;
         this.read = read;
+        this.description = description;
     }
 }

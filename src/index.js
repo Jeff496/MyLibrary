@@ -11,14 +11,14 @@ import makeCatalog from './js/catalog.js';
 
 export const userLibrary = [];
 
-function addBookToLibrary(title, author, pages, read) {
-    const newBook = new Book(title, author, pages, read);
+function addBookToLibrary(title, author, pages, read, description) {
+    const newBook = new Book(title, author, pages, read, description);
     userLibrary.push(newBook);
 }
 
-addBookToLibrary('1984', 'George Orwell', 324, readStatus.READ);
-addBookToLibrary('fakeBook', 'fake Author', 234, readStatus.READING);
-addBookToLibrary('fakeBook2', 'fake Author', 548, readStatus.WANT_TO_READ);
+addBookToLibrary('1984', 'George Orwell', 324, readStatus.READ, 'It tells the story of Winston Smith, a citizen of the miserable society of Oceania, who is trying to rebel against the Party and its omnipresent symbol, Big Brother.');
+addBookToLibrary('fakeBook', 'fake Author', 234, readStatus.READING, 'hello');
+addBookToLibrary('fakeBook2', 'fake Author', 548, readStatus.WANT_TO_READ, 'helllooooooo?');
 
 // switching tabs
 
@@ -44,5 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
     booksTab.addEventListener('click', () => switchTab(makeBooks));
     catalogTab.addEventListener('click', () => switchTab(makeCatalog));
 
-    switchTab(makeHome);
+    switchTab(makeBooks);
 })
