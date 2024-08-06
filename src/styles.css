@@ -43,6 +43,18 @@ nav ul li:nth-child(2) {
     margin: 5%;
     padding: 10px;
     border: rgba(0, 0, 0, 1) solid 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.bookCard > * {
+    margin: 5px 0;
+}
+
+.bookCard select,
+.bookCard button {
+    width: fit-content;
+    padding: 5px;
 }
 
 .bookCard h2 {
