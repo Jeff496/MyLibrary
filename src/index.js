@@ -44,5 +44,5 @@ document.addEventListener('DOMContentLoaded', () => {
     booksTab.addEventListener('click', () => switchTab(makeBooks));
     catalogTab.addEventListener('click', () => switchTab(makeCatalog));
 
-    switchTab(makeCatalog);
+    switchTab(makeHome);
 })

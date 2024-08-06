@@ -41,6 +41,7 @@ nav ul li:nth-child(2) {
 
 .bookCard {
     margin: 5%;
+    padding: 10px;
     border: rgba(0, 0, 0, 1) solid 2px;
 }
 
