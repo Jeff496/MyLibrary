@@ -1,5 +1,5 @@
 import { userLibrary } from '../index.js';
-import Book from './book.js';
+import Book, { readStatus } from './book.js';
 
 export default function makeCatalog() {
     const catalog = document.createElement('div');
@@ -18,7 +18,7 @@ function addBookForm() {
     const form = document.createElement('form');
     form.classList.add('addBookForm');
 
-    const titleLabel = document.createElement('lable');
+    const titleLabel = document.createElement('label');
     titleLabel.textContent = 'Book Title: ';
     titleLabel.htmlFor = 'titlefield';
 
@@ -31,7 +31,7 @@ function addBookForm() {
     form.appendChild(titleLabel);
     form.appendChild(titleField);
 
-    const authorLabel = document.createElement('lable');
+    const authorLabel = document.createElement('label');
     authorLabel.textContent = 'Author name: ';
     authorLabel.htmlFor = 'authorfield';
 
@@ -44,7 +44,7 @@ function addBookForm() {
     form.appendChild(authorLabel);
     form.appendChild(authorField);
 
-    const pagesLabel = document.createElement('lable');
+    const pagesLabel = document.createElement('label');
     pagesLabel.textContent = 'Number of Pages: ';
     pagesLabel.htmlFor = 'pagesfield';
 
@@ -57,19 +57,31 @@ function addBookForm() {
     form.appendChild(pagesLabel);
     form.appendChild(pagesField);
 
+    // read status
+
     const readDropdown = document.createElement('select');
     readDropdown.name = 'read';
     readDropdown.required = true;
 
-    const optionYes = document.createElement('option');
-    optionYes.value = 'true';
-    optionYes.textContent = 'Read';
-    readDropdown.appendChild(optionYes);
+    const read = document.createElement('option');
+    read.value = readStatus.READ;
+    read.textContent = 'Read';
+    readDropdown.appendChild(read);
     
-    const optionNo = document.createElement('option');
-    optionNo.value = 'false';
-    optionNo.textContent = 'Unread';
-    readDropdown.appendChild(optionNo);
+    const reading = document.createElement('option');
+    reading.value = readStatus.READING;
+    reading.textContent = 'Reading';
+    readDropdown.appendChild(reading);
+
+    const want_to_read = document.createElement('option');
+    want_to_read.value = readStatus.WANT_TO_READ;
+    want_to_read.textContent = 'Want to Read';
+    readDropdown.appendChild(want_to_read);
+
+    const unread = document.createElement('option');
+    unread.value = readStatus.UNREAD;
+    unread.textContent = 'Unread';
+    readDropdown.appendChild(unread);
 
     form.appendChild(readDropdown);
 
@@ -86,7 +98,7 @@ function addBookForm() {
         const title = event.target.title.value;
         const author = event.target.author.value;
         const pages = event.target.pages.value;
-        const read = event.target.read.value === 'true';
+        const read = event.target.read.value;
 
         const newBook = new Book(title, author, pages, read);
         userLibrary.push(newBook);
