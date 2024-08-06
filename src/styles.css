@@ -51,5 +51,23 @@ nav ul li:nth-child(2) {
 /* catalog tab styling */
 
 .addBookForm {
-    
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 50%;
+    margin-left: 40px;
+    padding: 10px;
+    border:rgba(0, 0, 0, 1) solid 3px;
+}
+
+.addBookForm > lable {
+    margin-top: 10px;
+}
+
+.addBookForm > input {
+    width: 100%;
+}
+
+.addBookForm > select {
+    margin: 10px 0;
 }
