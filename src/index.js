@@ -1,7 +1,7 @@
 "use strict";
 
 import './styles.css';
-import Book from './js/book.js';
+import Book, { readStatus } from './js/book.js';
 import makeHome from './js/home.js';
 import makeBooks from './js/bookList.js';
 import makeCatalog from './js/catalog.js';
@@ -16,9 +16,9 @@ function addBookToLibrary(title, author, pages, read) {
     userLibrary.push(newBook);
 }
 
-addBookToLibrary('1984', 'George Orwell', 324, true);
-addBookToLibrary('fakeBook', 'fake Author', 234, false);
-addBookToLibrary('fakeBook2', 'fake Author', 548, false);
+addBookToLibrary('1984', 'George Orwell', 324, readStatus.READ);
+addBookToLibrary('fakeBook', 'fake Author', 234, readStatus.READING);
+addBookToLibrary('fakeBook2', 'fake Author', 548, readStatus.WANT_TO_READ);
 
 // switching tabs
 
