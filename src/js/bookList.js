@@ -1,4 +1,4 @@
-import {userLibrary} from '../index.js';
+import { userLibrary } from '../index.js';
 
 export default function makeBooks() {
     const bookList = document.createElement('div');
