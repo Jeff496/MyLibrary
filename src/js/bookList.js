@@ -21,15 +21,13 @@ export function makeBooks() {
   bookList.appendChild(headline);
 
   userLibrary.forEach((book, index) => {
-    bookList.appendChild(
-      makeBookCards(bookList, book, index, buttonOption.REMOVE)
-    );
+    bookList.appendChild(makeBookCards(book, buttonOption.REMOVE, index));
   });
 
   return bookList;
 }
 
-export function makeBookCards(bookList, book, index, buttonOpt) {
+export function makeBookCards(book, buttonOpt, index = -1) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
 
@@ -68,10 +66,14 @@ export function makeBookCards(bookList, book, index, buttonOpt) {
   container.classList.add("container");
 
   // remove/add book button
+  const addBookButton = document.createElement("button");
+
   if (buttonOpt === buttonOption.REMOVE) {
-    container.appendChild(removeBookButton(bookList, index, bookCard));
+    container.appendChild(
+      removeBookButton(index, bookCard, addBookButton, book)
+    );
   } else {
-    container.appendChild(addBookButton(book));
+    container.appendChild(addButton(addBookButton, book));
   }
 
   // expand to show description
@@ -111,12 +113,13 @@ export function makeBookCards(bookList, book, index, buttonOpt) {
   return bookCard;
 }
 
-function removeBookButton(bookList, index, bookCard) {
+function removeBookButton(index, bookCard, buttonToUpdate, book) {
   const removeBookButton = document.createElement("button");
   removeBookButton.textContent = "Remove Book";
   removeBookButton.addEventListener("click", () => {
     userLibrary.splice(index, 1);
-    bookList.removeChild(bookCard);
+    bookCard.remove();
+    updateButtonState(buttonToUpdate, book);
     saveUserLibrary();
   });
 
@@ -124,13 +127,31 @@ function removeBookButton(bookList, index, bookCard) {
 }
 
 // only used to add books from carousel
-function addBookButton(book) {
-  const addBookButton = document.createElement("button");
-  addBookButton.textContent = "Add Book";
-  addBookButton.addEventListener("click", () => {
-    userLibrary.push(book);
-    saveUserLibrary();
-  });
-
+function addButton(addBookButton, book) {
+  updateButtonState(addBookButton, book);
+  if (!alreadyInLibrary(book)) {
+    addBookButton.addEventListener("click", () => {
+      userLibrary.push(book);
+      saveUserLibrary();
+      updateButtonState(addBookButton, book);
+    });
+  }
   return addBookButton;
+}
+
+function updateButtonState(addButton, book) {
+  if (alreadyInLibrary(book)) {
+    addButton.textContent = "In BookList";
+    addButton.disabled = true;
+  } else {
+    addButton.textContent = "Add Book";
+    addButton.disabled = false;
+  }
+}
+
+function alreadyInLibrary(book) {
+  return userLibrary.some(
+    (bookExists) =>
+      bookExists.title === book.title && bookExists.author === book.author
+  );
 }
