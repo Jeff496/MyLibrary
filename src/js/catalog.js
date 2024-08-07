@@ -98,6 +98,7 @@ function addBookForm() {
   form.appendChild(readDropdown);
 
   const submit = document.createElement("button");
+  submit.style.cursor = "pointer";
   submit.type = "submit";
   submit.textContent = "Add Book";
   form.appendChild(submit);

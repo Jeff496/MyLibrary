@@ -67,6 +67,7 @@ export function makeBookCards(book, buttonOpt, index = -1) {
 
   // remove/add book button
   const addBookButton = document.createElement("button");
+  addBookButton.style.cursor = "pointer";
 
   if (buttonOpt === buttonOption.REMOVE) {
     container.appendChild(
@@ -112,6 +113,7 @@ export function makeBookCards(book, buttonOpt, index = -1) {
 
 function removeBookButton(index, bookCard, buttonToUpdate, book) {
   const removeBookButton = document.createElement("button");
+  removeBookButton.style.cursor = "pointer";
   removeBookButton.textContent = "Remove Book";
   removeBookButton.addEventListener("click", () => {
     userLibrary.splice(index, 1);
