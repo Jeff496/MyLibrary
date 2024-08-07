@@ -4,7 +4,7 @@ import expandIcon from "../img/expandIcon.png";
 import collapseIcon from "../img/collapseIcon.png";
 import { loadUserLibrary, saveUserLibrary } from "./updateStore.js";
 
-const buttonOption = {
+export const buttonOption = {
   ADD: "add",
   REMOVE: "remove",
 };
