@@ -3,16 +3,17 @@
 import "./styles.css";
 import Book, { readStatus } from "./js/book.js";
 import makeHome from "./js/home.js";
-import makeBooks from "./js/bookList.js";
+import { makeBooks } from "./js/bookList.js";
 import makeCatalog from "./js/catalog.js";
 
 // user library
 export const userLibrary = [];
+export const featuredBooks = [];
 
 // test books: to be removed
 function addBookToLibrary(title, author, pages, read, description) {
   const newBook = new Book(title, author, pages, read, description);
-  userLibrary.push(newBook);
+  featuredBooks.push(newBook);
 }
 
 addBookToLibrary(
