@@ -4,7 +4,12 @@ import expandIcon from "../img/expandIcon.png";
 import collapseIcon from "../img/collapseIcon.png";
 import { loadUserLibrary, saveUserLibrary } from "./updateStore.js";
 
-export default function makeBooks() {
+const buttonOption = {
+  ADD: "add",
+  REMOVE: "remove",
+};
+
+export function makeBooks() {
   loadUserLibrary();
 
   const bookList = document.createElement("div");
@@ -16,13 +21,15 @@ export default function makeBooks() {
   bookList.appendChild(headline);
 
   userLibrary.forEach((book, index) => {
-    bookList.appendChild(makeBookCards(bookList, book, index));
+    bookList.appendChild(
+      makeBookCards(bookList, book, index, buttonOption.REMOVE)
+    );
   });
 
   return bookList;
 }
 
-function makeBookCards(bookList, book, index) {
+export function makeBookCards(bookList, book, index, buttonOpt) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
 
@@ -56,19 +63,16 @@ function makeBookCards(bookList, book, index) {
     saveUserLibrary();
   });
 
-  // div to contain both remove button and expand button for flexbox purposes
+  // div to contain both remove/add button and expand button for flexbox purposes
   const container = document.createElement("div");
   container.classList.add("container");
 
-  // remove book button
-  const removeBookButton = document.createElement("button");
-  removeBookButton.textContent = "Remove Book";
-  removeBookButton.addEventListener("click", () => {
-    userLibrary.splice(index, 1);
-    bookList.removeChild(bookCard);
-    saveUserLibrary();
-  });
-  container.appendChild(removeBookButton);
+  // remove/add book button
+  if (buttonOpt === buttonOption.REMOVE) {
+    container.appendChild(removeBookButton(bookList, index, bookCard));
+  } else {
+    container.appendChild(addBookButton(book));
+  }
 
   // expand to show description
   const expand = document.createElement("img");
@@ -105,4 +109,28 @@ function makeBookCards(bookList, book, index) {
   bookCard.appendChild(endContainer);
 
   return bookCard;
+}
+
+function removeBookButton(bookList, index, bookCard) {
+  const removeBookButton = document.createElement("button");
+  removeBookButton.textContent = "Remove Book";
+  removeBookButton.addEventListener("click", () => {
+    userLibrary.splice(index, 1);
+    bookList.removeChild(bookCard);
+    saveUserLibrary();
+  });
+
+  return removeBookButton;
+}
+
+// only used to add books from carousel
+function addBookButton(book) {
+  const addBookButton = document.createElement("button");
+  addBookButton.textContent = "Add Book";
+  addBookButton.addEventListener("click", () => {
+    userLibrary.push(book);
+    saveUserLibrary();
+  });
+
+  return addBookButton;
 }
