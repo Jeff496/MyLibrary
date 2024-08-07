@@ -20,7 +20,7 @@ addBookToLibrary(
   "George Orwell",
   324,
   readStatus.READ,
-  "It tells the story of Winston Smith, a citizen of the miserable society of Oceania, who is trying to rebel against the Party and its omnipresent symbol, Big Brother.",
+  "It tells the story of Winston Smith, a citizen of the miserable society of Oceania, who is trying to rebel against the Party and its omnipresent symbol, Big Brother."
 );
 addBookToLibrary("fakeBook", "fake Author", 234, readStatus.READING, "hello");
 addBookToLibrary(
@@ -28,7 +28,7 @@ addBookToLibrary(
   "fake Author",
   548,
   readStatus.WANT_TO_READ,
-  "helllooooooo?",
+  "helllooooooo?"
 );
 
 // switching tabs
@@ -54,5 +54,5 @@ document.addEventListener("DOMContentLoaded", () => {
   booksTab.addEventListener("click", () => switchTab(makeBooks));
   catalogTab.addEventListener("click", () => switchTab(makeCatalog));
 
-  switchTab(makeBooks);
+  switchTab(makeHome);
 });
