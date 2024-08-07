@@ -90,10 +90,8 @@ export function makeBookCards(book, buttonOpt, index = -1) {
   bookCard.appendChild(container);
 
   // collapse to hide description
-  const endContainer = document.createElement("div");
-  endContainer.classList.add("endContainer");
-
   const collapse = document.createElement("img");
+  collapse.id = "collapse";
   collapse.src = collapseIcon;
   collapse.alt = "collapse button";
   collapse.addEventListener("click", () => {
@@ -101,14 +99,13 @@ export function makeBookCards(book, buttonOpt, index = -1) {
     collapse.style.display = "none";
     expand.style.display = "block";
   });
-  endContainer.appendChild(collapse);
 
   // description
   const description = document.createElement("p");
   description.textContent = book.description;
   bookCard.appendChild(description);
 
-  bookCard.appendChild(endContainer);
+  bookCard.appendChild(collapse);
 
   return bookCard;
 }
