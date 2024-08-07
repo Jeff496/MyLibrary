@@ -2,8 +2,10 @@ import { makeBookCards, buttonOption } from "./bookList";
 import { featuredBooks, userLibrary } from "../index.js";
 import leftArrow from "../img/leftArrow.svg";
 import rightArrow from "../img/rightArrow.svg";
+import { loadUserLibrary } from "./updateStore.js";
 
 export default function makeHome() {
+  loadUserLibrary();
   const home = document.createElement("div");
 
   const headline = document.createElement("h1");
