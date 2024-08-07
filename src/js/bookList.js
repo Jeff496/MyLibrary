@@ -61,20 +61,16 @@ export function makeBookCards(book, buttonOpt, index = -1) {
     saveUserLibrary();
   });
 
-  // div to contain both remove/add button and expand button for flexbox purposes
-  const container = document.createElement("div");
-  container.classList.add("container");
-
   // remove/add book button
   const addBookButton = document.createElement("button");
   addBookButton.style.cursor = "pointer";
 
   if (buttonOpt === buttonOption.REMOVE) {
-    container.appendChild(
-      removeBookButton(index, bookCard, addBookButton, book)
+    bookCard.appendChild(
+      removeBookButton(index, bookCard, addBookButton, book) // addBookButton parameter for updating button state
     );
   } else {
-    container.appendChild(addButton(addBookButton, book));
+    bookCard.appendChild(addButton(addBookButton, book));
   }
 
   // expand to show description
@@ -86,9 +82,7 @@ export function makeBookCards(book, buttonOpt, index = -1) {
     collapse.style.display = "block";
     expand.style.display = "none";
   });
-  container.appendChild(expand);
-
-  bookCard.appendChild(container);
+  bookCard.appendChild(expand);
 
   // collapse to hide description
   const collapse = document.createElement("img");

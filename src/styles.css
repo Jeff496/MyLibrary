@@ -44,7 +44,7 @@ nav ul li:nth-child(2) {
 
 .carousel {
   position: relative;
-  height: 50vh;
+  height: 40vh;
   width: 80%;
   margin: 0 auto;
   background-color: grey;
@@ -69,7 +69,7 @@ nav ul li:nth-child(2) {
 
 .carouselItem .bookCard {
   width: 90%;
-  height: 80%;
+  height: auto;
 }
 
 .leftArrowButton,
@@ -172,7 +172,7 @@ nav ul li:nth-child(2) {
   margin-right: 5px;
 }
 
-#collapse {
+.bookCard img {
   margin-left: auto;
 }
 
