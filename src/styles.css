@@ -1,114 +1,116 @@
 * {
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 /* header styling */
 
 nav ul {
-    display: flex;
-    height: 10vh;
-    list-style: none;
-    border-bottom: rgba(0, 0, 0, 0.2) solid 2px;
+  display: flex;
+  height: 10vh;
+  list-style: none;
+  border-bottom: rgba(0, 0, 0, 0.2) solid 2px;
 }
 
 nav ul li {
-    flex-grow: 1;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  flex-grow: 1;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 nav ul li:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 nav ul li:nth-child(2) {
-    border-left: rgba(0, 0, 0, 0.2) solid 2px;
-    border-right: rgba(0, 0, 0, 0.2) solid 2px;
+  border-left: rgba(0, 0, 0, 0.2) solid 2px;
+  border-right: rgba(0, 0, 0, 0.2) solid 2px;
 }
 
 /* headline styling */
 
 .headline {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
 }
 
 /* booklist tab styling */
 
 .bookCard {
-    margin: 5%;
-    padding: 10px;
-    border: rgba(0, 0, 0, 1) solid 2px;
-    display: flex;
-    flex-direction: column;
+  margin: 5%;
+  padding: 10px;
+  border: rgba(0, 0, 0, 1) solid 2px;
+  display: flex;
+  flex-direction: column;
 }
 
 .bookCard > * {
-    margin: 5px 0;
+  margin: 5px 0;
 }
 
 .bookCard select,
 .bookCard button {
-    width: fit-content;
-    padding: 5px;
+  width: fit-content;
+  padding: 5px;
 }
 
 .bookCard h2 {
-    border-bottom: rgba(0, 0, 0, 1) solid 2px;
+  border-bottom: rgba(0, 0, 0, 1) solid 2px;
 }
 
 .container {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .bookCard img {
-    filter: grayscale(100%) sepia(100%) hue-rotate(180deg) brightness(80%) contrast(90%);
-    height: 36px;
-    width: 36px;
-    transform: rotate(90deg);
+  filter: grayscale(100%) sepia(100%) hue-rotate(180deg) brightness(80%)
+    contrast(90%);
+  height: 36px;
+  width: 36px;
+  transform: rotate(90deg);
 }
 
 .bookCard img:hover {
-    filter: grayscale(0%) sepia(0%) hue-rotate(0deg) brightness(60%) contrast(100%);
+  filter: grayscale(0%) sepia(0%) hue-rotate(0deg) brightness(60%)
+    contrast(100%);
 }
 
 .bookCard p,
 .endContainer img {
-    display: none;
+  display: none;
 }
 
 .bookCard .endContainer {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 /* catalog tab styling */
 
 .addBookForm {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    width: 50%;
-    margin-left: 40px;
-    padding: 10px;
-    border:rgba(0, 0, 0, 1) solid 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 50%;
+  margin-left: 40px;
+  padding: 10px;
+  border: rgba(0, 0, 0, 1) solid 3px;
 }
 
 .addBookForm > lable {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .addBookForm > input {
-    width: 100%;
+  width: 100%;
 }
 
 .addBookForm > select {
-    margin: 10px 0;
+  margin: 10px 0;
 }
